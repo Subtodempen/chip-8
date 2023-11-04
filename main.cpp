@@ -2,5 +2,8 @@
 
 
 int main(){
+	CPU cpu;
 
+	cpu.Init();
+	cpu.loadRom("rom.ch8");
 }

@@ -1,4 +1,6 @@
 #include<iostream>
+#include<fstream>
+#include<vector>
 
 class CPU{
 	public:
@@ -6,12 +8,12 @@ class CPU{
 		~Cpu();
 
 		void Init();	//sets everyything to zero
-		void loadRom(); //loads ROM instructions into 0x200 onwards
-		void emuCycle();//emulates a cycle
+		void loadRom(std::string Fname); //loads ROM instructions into 0x200 onwards
+	//	void emuCycle();//emulates a cycle
 	private:
 		struct Memory{
-			unsigned char ram[4095];
-			unsigned char V[15];//stack dont forget
+			std::vector<uint8_t> ram[4095];
+			std::vector<uint8_t> V[15];//stack dont forget
 
 			uint16_t I;
 
