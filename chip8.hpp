@@ -1,19 +1,21 @@
 #include<iostream>
 #include<fstream>
 #include<vector>
+#include<cstdint>
+
 
 class CPU{
 	public:
-		Cpu();
-		~Cpu();
+		CPU();
+		~CPU();
 
 		void Init();	//sets everyything to zero
 		void loadRom(std::string Fname); //loads ROM instructions into 0x200 onwards
-	//	void emuCycle();//emulates a cycle
+	 	void emuCycle();//emulates a cycle
 	private:
 		struct Memory{
-			std::vector<uint8_t> ram[4095];
-			std::vector<uint8_t> V[15];//stack dont forget
+			std::vector<uint8_t> ram;
+			std::vector<uint8_t> V;//stack dont forget
 
 			uint16_t I;
 
@@ -23,4 +25,6 @@ class CPU{
 			uint16_t PC;
 			uint8_t SP;
 		}mem;
+
+		void littleToBig(std::vector<uint8_t> &vec);
 };
